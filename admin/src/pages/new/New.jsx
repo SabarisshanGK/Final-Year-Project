@@ -1,12 +1,12 @@
-import "./new.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
-import axios from "axios";
+import './new.scss';
+import Sidebar from '../../components/sidebar/Sidebar';
+import Navbar from '../../components/navbar/Navbar';
+import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
+import { useState } from 'react';
+import axios from 'axios';
 
 const New = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState('');
   const [info, setInfo] = useState({});
 
   const handleChange = (e) => {
@@ -16,11 +16,11 @@ const New = ({ inputs, title }) => {
   const handleClick = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("file", file);
-    data.append("upload_preset", "upload");
+    data.append('file', file);
+    data.append('upload_preset', 'sulmghgi');
     try {
       const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+        'https://api.cloudinary.com/v1_1/djfvd6jpu/image/upload/',
         data
       );
 
@@ -31,7 +31,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post('/auth/register', newUser);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,7 @@ const New = ({ inputs, title }) => {
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
               }
               alt=""
             />
@@ -67,7 +67,7 @@ const New = ({ inputs, title }) => {
                   type="file"
                   id="file"
                   onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
               </div>
 

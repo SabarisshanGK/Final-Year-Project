@@ -1,6 +1,6 @@
 .navbar{
   height: 50px;
-  background-color: #003580;
+  background-color: lightsalmon;
   display: flex;
   justify-content: center;
 }
@@ -8,7 +8,7 @@
 .navContainer{
   width: 100%;
   max-width: 1024px;
-  color: white;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,5 +23,13 @@
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  color: #003580;
+  color: white;
+  background-color: blue;
+  padding: 10px;
+  border-radius: 5px;
+}
+.navButton:hover{
+  background-color: transparent;
+  color: blue;
+  border: 1px solid blue;
 }

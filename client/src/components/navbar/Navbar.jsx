@@ -1,20 +1,41 @@
-import "./navbar.css";
-import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import './navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 const Navbar = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const handleClick = () => {
+    if (user) {
+      // setOpenModal(true);
+    } else {
+      navigate('/login');
+    }
+  };
+  const handleRegister = () => {
+    if (user) {
+      // setOpenModal(true);
+    } else {
+      navigate('/register');
+    }
+  };
 
   return (
     <div className="navbar">
       <div className="navContainer">
-        <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-          <span className="logo">lamabooking</span>
+        <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+          <span className="logo">Room Booking</span>
         </Link>
-        {user ? user.username : (
+        {user ? (
+          user.username
+        ) : (
           <div className="navItems">
-            <button className="navButton">Register</button>
-            <button className="navButton">Login</button>
+            <button className="navButton" onClick={handleRegister}>
+              Register
+            </button>
+            <button className="navButton" onClick={handleClick}>
+              Login
+            </button>
           </div>
         )}
       </div>

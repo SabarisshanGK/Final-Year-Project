@@ -1,12 +1,12 @@
-import "./list.css";
-import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import { format } from "date-fns";
-import { DateRange } from "react-date-range";
-import SearchItem from "../../components/searchItem/SearchItem";
-import useFetch from "../../hooks/useFetch";
+import './list.css';
+import Navbar from '../../components/navbar/Navbar';
+import Header from '../../components/header/Header';
+import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { format } from 'date-fns';
+import { DateRange } from 'react-date-range';
+import SearchItem from '../../components/searchItem/SearchItem';
+import useFetch from '../../hooks/useFetch';
 
 const List = () => {
   const location = useLocation();
@@ -18,7 +18,7 @@ const List = () => {
   const [max, setMax] = useState(undefined);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 99999999}`
   );
 
   const handleClick = () => {
@@ -41,8 +41,8 @@ const List = () => {
               <label>Check-in Date</label>
               <span onClick={() => setOpenDate(!openDate)}>{`${format(
                 dates[0].startDate,
-                "MM/dd/yyyy"
-              )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+                'MM/dd/yyyy'
+              )} to ${format(dates[0].endDate, 'MM/dd/yyyy')}`}</span>
               {openDate && (
                 <DateRange
                   onChange={(item) => setDates([item.selection])}
@@ -107,7 +107,7 @@ const List = () => {
           </div>
           <div className="listResult">
             {loading ? (
-              "loading"
+              'loading'
             ) : (
               <>
                 {data.map((item) => (

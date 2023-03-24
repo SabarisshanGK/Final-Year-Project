@@ -1,25 +1,25 @@
-import "./hotel.css";
-import Navbar from "../../components/navbar/Navbar";
-import Header from "../../components/header/Header";
-import MailList from "../../components/mailList/MailList";
-import Footer from "../../components/footer/Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './hotel.css';
+import Navbar from '../../components/navbar/Navbar';
+import Header from '../../components/header/Header';
+import MailList from '../../components/mailList/MailList';
+import Footer from '../../components/footer/Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
   faCircleXmark,
   faLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
-import useFetch from "../../hooks/useFetch";
-import { useLocation, useNavigate } from "react-router-dom";
-import { SearchContext } from "../../context/SearchContext";
-import { AuthContext } from "../../context/AuthContext";
-import Reserve from "../../components/reserve/Reserve";
+} from '@fortawesome/free-solid-svg-icons';
+import { useContext, useState } from 'react';
+import useFetch from '../../hooks/useFetch';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContext';
+import { AuthContext } from '../../context/AuthContext';
+import Reserve from '../../components/reserve/Reserve';
 
 const Hotel = () => {
   const location = useLocation();
-  const id = location.pathname.split("/")[2];
+  const id = location.pathname.split('/')[2];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -47,7 +47,7 @@ const Hotel = () => {
   const handleMove = (direction) => {
     let newSlideNumber;
 
-    if (direction === "l") {
+    if (direction === 'l') {
       newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
     } else {
       newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
@@ -60,7 +60,7 @@ const Hotel = () => {
     if (user) {
       setOpenModal(true);
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   };
   return (
@@ -68,7 +68,7 @@ const Hotel = () => {
       <Navbar />
       <Header type="list" />
       {loading ? (
-        "loading"
+        'loading'
       ) : (
         <div className="hotelContainer">
           {open && (
@@ -81,7 +81,7 @@ const Hotel = () => {
               <FontAwesomeIcon
                 icon={faCircleArrowLeft}
                 className="arrow"
-                onClick={() => handleMove("l")}
+                onClick={() => handleMove('l')}
               />
               <div className="sliderWrapper">
                 <img
@@ -93,7 +93,7 @@ const Hotel = () => {
               <FontAwesomeIcon
                 icon={faCircleArrowRight}
                 className="arrow"
-                onClick={() => handleMove("r")}
+                onClick={() => handleMove('r')}
               />
             </div>
           )}
@@ -108,8 +108,8 @@ const Hotel = () => {
               Excellent location – {data.distance}m from center
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a
-              free airport taxi
+              Book a stay over Rs.{data.cheapestPrice} at this property and get
+              a free airport taxi
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
@@ -135,7 +135,7 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  <b>Rs.{days * data.cheapestPrice * options.room}</b> ({days}{' '}
                   nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
@@ -146,7 +146,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
 };
